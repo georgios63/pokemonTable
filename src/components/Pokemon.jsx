@@ -1,11 +1,21 @@
 import PokemonCard from "./PokemonCard";
 import { pokemons } from "./Pokemons";
+import { useState } from "react";
 
 export default function Pokemon() {
+  const [pokemonList, set_pokemonList] = useState(pokemons);
+
+  const table = () => {
+    pokemonList.length ? set_pokemonList([]) : set_pokemonList(pokemons);
+  };
+
   return (
     <div>
       <h1>Pokedex</h1>
-      <table className="table table-hover table-dark table-bordered">
+      <button className="btn btn-outline-primary m-4 " onClick={table}>
+        {pokemonList.length ? "Clear Table" : "Show Pokemons"}
+      </button>
+      <table className="table  table-hover table-dark table-bordered">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -16,7 +26,7 @@ export default function Pokemon() {
           </tr>
         </thead>
         <tbody>
-          {pokemons.map((pokemon, index) => {
+          {pokemonList.map((pokemon, index) => {
             return (
               <PokemonCard
                 key={index}
