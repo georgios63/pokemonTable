@@ -8,10 +8,6 @@ export default function Buttons() {
 
   console.log("A render!");
 
-  useEffect(() => {
-    console.log("The useEffect action!");
-  }, [numLikes]);
-
   // console.log("what are these?", numLikes, set_numLikes);
 
   const increment = () => {
